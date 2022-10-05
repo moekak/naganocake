@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-2">
+       購入者
+    </div>
+    <div class="col">
+       <%= @order.customer.last_name%><%= @order.customer.first_name%>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2">
+       注文日
+    </div>
+    <div class="col">
+      <%= @order.created_at.strftime('%Y/%m/%d') %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2">
+       配送先
+    </div>
+    <div class="col">
+      〒<%= @order.postal_code %>
+      <%= @order.address %>
+      <%= @order.name %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2">
+       支払方法
+    </div>
+    <div class="col">
+      <%= @order.payment_method_i18n %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2">
+       注文ステータス
+    </div>
+    <div class="col-2">
+      <%= form_with model: @order, url: admin_order_path do |f| %>
+        <%= f.select :status, Order.statuses_i18n.invert %>
+      </div>
+      <div class='col'>
+        <%= f.submit "更新", class: "update" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+<table class="table table-bordered table_show">
+         <thead class='bg-light'>
+            <tr>
+              <th class='col-2'>商品名</th>
+              <th class='col-2'>単価（税込み)</th>
+              <th class='col-1'>数量</th>
+              <th class='col-1'>小計</th>
+              <th class='col-4'>制作ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.order_details.each do |item| %>
+            <tr>
+              <td><%= item.item.name %></td>
+              <td><%= item.item.price %></td>
+              <td><%= item.amount %></td>
+              <td><%= item.item.price * item.amount %></td>
+              <td>
+                <div class='container'>
+                  <div class='row align-items-center'>
+                    <div class='col-3'>
+                       <%= form_with model: item, url: admin_order_detail_path(item.id) do |f| %>
+                          <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                    </div>
+                    <div class='col'>
+                       <%= f.submit "更新", class: "update" %>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+      </table>
+<table class="table table_payment">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">商品合計</th>
+      <td><%= @order.total_payment - @order.shipping_cost %></td>
+    </tr>
+    <tr>
+      <th scope="row">送料</th>
+      <td><%= @order.shipping_cost %></td>
+    </tr>
+    <tr>
+      <th scope="row">請求金額合計</th>
+      <td><%= @order.total_payment %></td>
+    </tr>
+  </tbody>
+</table>

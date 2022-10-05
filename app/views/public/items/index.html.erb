@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="genre_container">
+      <h5 class='genre_name'>ジャンル検索</h5>
+      <% @genres.each do |genre| %>
+        <div class="genre_info py-2">
+          <%= genre.name %>
+        </div>
+      <% end %>
+    </div>
+  <!--商品一覧-->
+    <div class="col">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h4>商品一覧</h4>
+          </div>
+        </div>
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class='col'>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+              <p><%= link_to item.name, item_path(item.id) %></p>
+              <p>￥<%= item.price %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

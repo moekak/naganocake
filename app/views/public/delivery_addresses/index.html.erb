@@ -1,0 +1,67 @@
+<!--新規投稿画面-->
+<%= form_with model: @delivery_address, url: delivery_addresses_path do |f| %>
+  <div class="container mt-5">
+    <div class="row mt-3">
+      <div class="col-3">
+        配送先登録/一覧
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class='col-3'>
+        郵便番号（ハイフンなし）
+      </div>
+      <div class='col'>
+        <%= f.text_field :postal_code, placeholder: "0000000" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class='col-3'>
+        住所
+      </div>
+      <div class='col'>
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園0-0", class: "address_delivery" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class='col-3'>
+        宛名
+      </div>
+      <div class='col'>
+        <%= f.text_field :name, placeholder: "令和道子" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class='col'>
+        <%= f.submit '新規投稿', class: "submit" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<table class="table table-bordered border-primary mt-5">
+    <thead class='bg-light'>
+      <tr>
+        <th class='col-1'>郵便番号</th>
+        <th class='col-4'>住所</th>
+        <th class='col-1'>宛名</th>
+        <th class='col-3'>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @delivery_addresses.each do |delivery_address| %>
+        <tr>
+          <td><%= delivery_address.postal_code %></td>
+          <td><%= delivery_address.address %></td>
+          <td><%= delivery_address.name %></td>
+          <td>
+            <%= link_to "編集する", edit_delivery_address_path(delivery_address.id),class: 'btn btn-success m-2' %>
+            <%= link_to '削除する', delivery_address_path(delivery_address.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class: 'btn btn-danger m-2 ' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+

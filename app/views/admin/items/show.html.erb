@@ -1,0 +1,80 @@
+<div class="container">
+  <div class='row'>
+    <h3 class='col pt-5'>
+      <span>商品詳細</span>
+    </h4>
+  </div>
+</div>
+  <div class='container mt-5'>
+    <div class='row show__container align-items-center'>
+      <div class='col-4'>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, size: "300x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+      </div>
+      <div class='col'>
+        <div class='container '>
+          <div class='row mb-4'>
+            <div class="col-3">
+              商品名
+            </div>
+            <div class="col-5">
+              <%= @item.name  %>
+            </div>
+          </div>
+          <div class='row mb-4'>
+            <div class="col-3">
+              商品説明
+            </div>
+            <div class="col-5">
+              <%= @item.introduction  %>
+            </div>
+          </div>
+          <div class='row mb-4'>
+            <div class="col-3">
+              ジャンル
+            </div>
+            <div class="col-5">
+              <%= @item.genre.name  %>
+            </div>
+          </div>
+          <div class='row mb-4'>
+            <div class="col-3">
+              税込価格 <br>(税抜価格）
+            </div>
+            <div class="col-5">
+              <%= @item.price  %>円
+             ( <%= @item.with_tax_price%> )円
+
+            </div>
+          </div>
+          <div class='row mb-4'>
+            <div class="col-3">
+              販売ステータス
+            </div>
+            <div class="col-5">
+              <% if @item.is_active %>
+                 販売中
+              <% else %>
+                販売停止中
+              <% end %>
+            </div>
+          </div>
+          <div class="row  mt-4">
+            <div class="col-3 offset-2">
+               <%= link_to "編集する",  edit_admin_item_path(@item.id), class: "submit" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

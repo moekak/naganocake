@@ -1,0 +1,38 @@
+
+<div class='container'>
+  <div class="row mt-5">
+    <div class="genre_container">
+      <h5 class='genre_name'>ジャンル検索</h5>
+      <% @genres.each do |genre| %>
+        <div class="genre_info py-2">
+          <%= genre.name %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col offset-1">
+      <div class='container'>
+        <div class="row">
+          <div class='col'>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image, size: "300x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "300x300" %>
+            <% end %>
+          </div>
+          <div class='col'>
+            <h2><%= @item.name %></h2>
+            <h4><%= @item.introduction %></h4>
+            <h4><%= @item.price %></h4>
+            <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+              <%= f.select :amount, *[1..10], { include_blank: '選択してください'} %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit 'カートに入れる', class: "submit" %>
+            <% end %>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

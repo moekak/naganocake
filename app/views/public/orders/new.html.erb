@@ -1,0 +1,75 @@
+<%= form_with model: @order, url: orders_confirm_path do |f| %>
+  <div clas="container">
+    <div class='row info_container'>
+      <div class='col'>
+        注文情報入力
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col info_row'>
+        支払方法
+      </div>
+    </div>
+    <div class='radio'>
+      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method, "クレジットカード" %>
+    </div>
+    <div class='radio'>
+      <%= f.radio_button :payment_method, "transfer" %>
+      <%= f.label :payment_method, "銀行振込" %>
+    </div>
+    <div class='row'>
+      <div class='col info_row'>
+        お届け先
+      </div>
+    </div>
+      <div class='radio'>
+        <%= radio_button_tag :address_number, "1" %>
+        <%= f.label :address, "ご自身の住所" %> <br>
+        <%= f.label :address, current_customer.address, class: 'address_info' %>><br>
+        <%= f.label :name, current_customer.last_name, class: 'address_info'  %>
+        <%= f.label :name, current_customer.first_name %>
+      </div>
+      <div class='radio'>
+        <%= radio_button_tag :address_number, "2" %>
+        <%= f.label :address, "登録済住所から選択" %> <br>
+        <%= select_tag :address_id, options_from_collection_for_select(Address.all, :id, :address_display), class: 'address_info'  %>
+      </div>
+      <div class='radio'>
+        <%= radio_button_tag :address_number, "3" %>
+        <%= f.label :address, "新しいお届け先" %> <br>
+        <div class="row mt-3 address_info">
+          <div class='col-3'>
+            郵便番号（ハイフンなし）
+          </div>
+          <div class='col'>
+            <%= f.text_field :postal_code, placeholder: "0000000" %>
+          </div>
+        </div>
+        <div class="row mt-3 address_info">
+          <div class='col-3'>
+            住所
+          </div>
+          <div class='col'>
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園0-0", class: "address_delivery" %>
+          </div>
+        </div>
+        <div class="row mt-3 address_info">
+          <div class='col-3'>
+            宛名
+          </div>
+          <div class='col'>
+            <%= f.text_field :name, placeholder: "令和道子" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='container'>
+    <div class='row mt-5'>
+      <div class= 'col'>
+        <%= f.submit '確認画面へ進む', class: "submit" %>
+      </div>
+    </div>
+  </div>
+<% end %>

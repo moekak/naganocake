@@ -1,0 +1,70 @@
+
+
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <div class="container item_new mt-5">
+    <div class= "row">
+      <h3 class="col-lg-4 offset-1 mb-5">
+        <span>商品新規登録</span>
+      </h3>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        商品画像
+      </div>
+      <div class="col-4">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        商品名
+      </div>
+      <div class="col-4">
+        <%= f.text_field :name, class: "put", placeholder: "商品名" %>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        商品説明
+      </div>
+      <div class="col-4">
+        <%= f.text_area :introduction,class: "area", placeholder: "ここに説明文を記述します" %>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        ジャンル
+      </div>
+      <div class="col-4">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "--選択してください--", class: "choose" %>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        税抜価格
+      </div>
+      <div class="col-4">
+        <%= f.text_field :price, class: "put", placeholder: "1000" %>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-2">
+        販売ステータス
+      </div>
+      <div class="col-4">
+         <%= f.radio_button :is_active, :true %>
+         <%= f.label :is_active, "販売中", {style: "display: inline-block;"} %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "販売停止中", {style: "display: inline-block;"} %>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-1">
+        <%= f.submit '新規投稿', class: "submit" %>
+      </div>
+    </div>
+
+
+  </div>
+
+  <% end %>

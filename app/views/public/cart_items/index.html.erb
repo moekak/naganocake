@@ -1,0 +1,74 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-9 mt-4'>
+      ショッピングカートカート
+    </div>
+    <div class='col mt-4'>
+      <%= link_to 'カートを空にする', cart_items_destroy_all_path(@cart_items), method: :delete, "data-confirm" => "本当に削除しますか？" ,class: 'btn btn-danger m-2 ' %>
+    </div>
+  </div>
+</div>
+
+  <table class="table table-bordered border-primary mt-5 table_cart">
+    <thead class='bg-light'>
+      <tr>
+        <th class='col-2'>商品名</th>
+        <th class='col-2'>単価（税込み）</th>
+        <th class='col-5'>数量</th>
+        <th class='col-1'>小計</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.price %></td>
+          <td>
+            <div class='container'>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
+              <div class='row'>
+                <div class='col-3'>
+                  <%= f.select :amount, *[1..10], {selected: cart_item.amount} %>
+                </div>
+                <div class='col-3'>
+                  <%= f.submit '変更', class: "change_number" %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+           </td>
+          <td>
+            <%= cart_item.subtotal%>
+            <% @total += cart_item.subtotal %>
+          </td>
+          <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class: 'btn btn-danger m-2 ' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<div class='container'>
+  <div class='row w-70'>
+    <div class='col-3 mt-5'>
+      <%= link_to "買い物を続ける", items_path, class: "continue_shopping" %>
+    </div>
+    <div class='col'>
+      <table class="table table-bordered border-primary mt-5 table_total">
+        <tbody>
+          <tr>
+            <th scope="row">合計金額</th>
+            <td><%= @total %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% if @cart_items.any?  %>
+    <div class='row mt-5 justify-content-center'>
+      <%= link_to "情報入力に進む", new_order_path, class: "info_button" %>
+    </div>
+  <% end %>
+
+</div>
+

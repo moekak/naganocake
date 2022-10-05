@@ -1,0 +1,341 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.nav-item{
+  padding-right:40px;
+
+}
+nav{
+  border: 1px solid black;
+}
+.word{
+  color:black;
+  border:1px solid rgba(0,0,0,0.1);
+  padding: 5px 10px;
+
+}
+.pol{
+  color:pink;
+}
+// 商品一覧
+
+.table{
+  width: 100%;
+  margin:auto;
+}
+.background{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 2% auto;
+
+}
+.button{
+  border-radius: 200px;
+  border: 1px solid rgba(0,0,0);
+  padding: 10px 20px;
+}
+// 商品新規登録
+.space{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3%;
+}
+.input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin: 10px 0;
+}
+
+
+.name{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.field{
+  width: 75%;
+}
+
+.put{
+  width: 90%;
+}
+.area{
+  width: 90%;
+  height: 100px;
+}
+.title{
+  margin-left: 18%;
+  margin-top: 3%;
+}
+.submit{
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+  padding: 15px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.log_in{
+  background-color: blue;
+  border-radius: 10px;
+  border: none;
+  padding: 15px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+// 商品詳細画面
+.info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3%;
+}
+.details{
+  width: 100%;
+}
+.text{
+  width: 70%;
+}
+// ジャンル一覧画面
+.genre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10%;
+  width: 60%;
+  margin-top: 3%;
+  gap: 5%;
+}
+.genre_info{
+  padding: 0 30px;
+}
+.genre_container{
+  border: 1px solid black;
+
+}
+.item_container{
+  display: flex;
+}
+.genre_name{
+  border-bottom: 1px solid black;
+  padding: 0 30px;
+}
+.all{
+  width: 30%;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.edit_button{
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+  padding: 8px 20px;
+  color: white;
+}
+// 会員一覧
+.customer{
+  width: 70% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+.table_two{
+  width: 60%;
+}
+.customer_info{
+  margin-left: 10%;
+  margin-top: 3%;
+}
+.customer_show{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2%;
+}
+.submit_edit{
+  color: white;
+}
+button{
+  margin-top: 2%;
+  margin-right: 5%;
+}
+// 顧客編集画面
+.customer_edit{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin-bottom: 3%;
+}
+.customer_field{
+  width: 90%;
+}
+.customer_input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 10px 0;
+}
+.name{
+  text-align: center;
+}
+.customer_info_edit{
+  margin-left: 10%;
+  margin-top: 3%;
+}
+// 客側のトップ画面
+.top_container{
+  display: flex;
+}
+
+
+.login_container{
+  height: 400px;
+}
+span{
+  background-color: #dddddd;
+  padding: 0 10px;
+}
+
+.item_new{
+  height: 500px;
+  align-items: center;
+}
+.main_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.show__container{
+  height: 400px;
+}
+thead{
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+}
+.address{
+  width: 100%;
+}
+.address_delivery{
+  width: 80%;
+}
+.sign_in{
+  background-color: #338DFF;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 50px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.my_page_container{
+  border: 1px solid black;
+}
+.mypage_main{
+  margin-top: 5%;
+}
+.mypage{
+  margin-left: 20%;
+}
+.table_items{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.table_total{
+  width: 25%;
+  margin-left: 70%;
+}
+.continue_shopping{
+  background-color: #338DFF;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 50px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.table_cart{
+  width: 70%;
+  justify-content: center;
+}
+.info_button{
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 50px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.change_number{
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+
+}
+
+.radio{
+  margin-left: 15%;
+}
+.info_container{
+  margin-left: 25%;
+}
+.info_row{
+  margin-left: 10%;
+}
+.address_info{
+  margin-left: 2% ;
+}
+.update{
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.table_show{
+  width: 70%;
+  margin-top: 5%;
+}
+.table_payment{
+  width: 30%;
+}

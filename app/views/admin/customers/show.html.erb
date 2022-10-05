@@ -1,0 +1,79 @@
+
+<div class="container">
+    <div class="row mt-4">
+      <div class="col-6">
+        <h4>
+          <span><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</span>
+        </h4>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        会員ID
+      </div>
+      <div class="col">
+        <%= @customer.last_name %><%= @customer.first_name %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        フリガナ
+      </div>
+      <div class="col">
+        <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        郵便番号</h6>
+      </div>
+      <div class="col-2">
+        <%= @customer.postal_code %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        住所</h6>
+      </div>
+      <div class="col">
+       <%= @customer.address %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        電話番号</h6>
+      </div>
+      <div class="col">
+        <%= @customer.telephone_number %>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-2">
+        メールアドレス</h6>
+      </div>
+      <div class="col">
+        <%= @customer.email %>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-2">
+        ステータス</h6>
+      </div>
+      <div class="col">
+        <% if @customer.is_active %>
+    　    有効
+        <% else %>
+          退会
+        <% end %>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success">
+      <%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "submit_edit" %>
+      <%= link_to '注文一覧を見る', admin_orders_path, class: "submit_edit" %>
+    </button>
+    </div>
+</div>
+
+

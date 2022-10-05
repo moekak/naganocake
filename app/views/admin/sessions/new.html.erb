@@ -1,0 +1,28 @@
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="container ms-7 login_container">
+    <div class= "row">
+      <h3 class="col-lg-4 offset-2 mt-5">
+        <span>管理者ログイン</span>
+      </h3>
+    </div>
+    <div class="row  justify-content-center m-4">
+      <%= f.label :email, "メールアドレス", class: "col-lg-2" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-4", placeholder: "sample@example.com"  %>
+    </div>
+    <div class="row justify-content-center m-4">
+      <%= f.label :password, "パスワード", class: "col-lg-2" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "col-lg-4" %>
+    </div>
+    <div class= "row justify-content-center">
+
+        <div class="actions">
+          <%= f.submit "ログイン", class: "log_in"  %>
+        </div>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render "admin/shared/links" %>
